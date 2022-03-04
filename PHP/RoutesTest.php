@@ -8,12 +8,12 @@
 namespace PHP;
 
 use PHPUnit\Framework\TestCase;
-require ("Task.php");
+require ("Routes.php");
 
-class TaskTest extends TestCase {
+class RoutesTest extends TestCase {
 
-    public function testTask() {
-        $obj = new Task();
+    public function testRoutes() {
+        $obj = new Routes();
         //Test 1
         $want = "MNL, TAG, CEB, TAC, BOR";
         $got = $obj->find_routes( [["MNL", "TAG"], ["CEB", "TAC"], ["TAG", "CEB"], ["TAC", "BOR"]] );
