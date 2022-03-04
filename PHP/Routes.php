@@ -8,7 +8,7 @@ namespace PHP;
 
 //echo "The result is "+find_routes( [["MNL", "TAG"], ["CEB", "TAC"], ["TAG", "CEB"], ["TAC", "BOR"]] );
 
-class Task {
+class Routes {
 
     /**
      * Order list of the places to travel.
