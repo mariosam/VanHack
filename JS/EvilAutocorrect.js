@@ -17,13 +17,13 @@ function autocorrect(input) {
     let words = input.split(" ");
 
     words.forEach(function(word, i, array) {
-        if ( word.toLowerCase() === "u" || word.toLowerCase() === "you" ) {
+        if ( "u" === word.toLowerCase() || "you" === word.toLowerCase() ) {
             result += YOURCLIENT;
-        } else if ( word.substr(0,3).toLowerCase() === "you" && word.length === 4 && POINTS.includes( word.substr(-1,1) ) ) {
+        } else if ( word.length === 4 && "you" === word.substr(0,3).toLowerCase() && POINTS.includes( word.substr(-1,1) ) ) {
             let last = word.substr(-1,1);
 
             result += YOURCLIENT+last;
-        } else if ( word.substr(0,3).toLowerCase() === "you" && checkU( word.substr(3) ) ) {
+        } else if ( word.length > 2 && "you" === word.substr(0,3).toLowerCase() && checkU( word.substr(3) ) ) {
             result += YOURCLIENT;
 
             let last = word.substr(-1,1);
@@ -42,12 +42,16 @@ function autocorrect(input) {
 function checkU(word) {
     let all = word.split("");
 
-    for ( let letter of all ) {
-        if ( letter === "u" || all.last && POINTS.includes( letter ) ) {
-            return true;
+    for ( let i=0; i < all.length; i++ ) {
+        let letter = all[i].charAt(0);
+
+        if ( "u" === letter || all.length-1==i && POINTS.includes( letter ) ) {
+            //return true;
         } else {
             return false;
         }
     }
+
+    return true;
 }
 module.exports = {autocorrect}
